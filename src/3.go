@@ -9,29 +9,27 @@ package src
 // 维护一个window
 
 func lengthOfLongestSubstring(s string) int {
-	if len(s) == 0 || len(s) == 1{
-		return len(s)
-	}
-	maxLen := 0
-	for i, v := range s {
-		window := []string{}
-		for k := i+1; i < len(s); i++ {
-			if InArray(string(s[k]), window) {
-				window = append(window, string(v))
+	maxLength := 0
+	for i, _ := range s {
+		temp := []string{}
+		for j := i; j < len(s); j++ {
+			if inArray(string(s[j]), temp) == false {
+				temp = append(temp, string(s[j]))
 			} else {
 				break
 			}
+
 		}
-		if len(window) > maxLen {
-			maxLen = len(window)
+		if len(temp) > maxLength {
+			maxLength = len(temp)
 		}
 	}
-	return maxLen
+	return maxLength
 }
 
-func InArray(n string, nums []string) (result bool) {
-	for _, v := range nums {
-		if n == v {
+func inArray(s string, arr []string) (res bool){
+	for _, v := range arr {
+		if v == s {
 			return true
 		}
 	}
