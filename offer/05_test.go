@@ -1,6 +1,6 @@
 /*
 *  @author: zengjinlin@didiglobal.com
-*  @Date: 2020/12/17
+*  @Date: 2020/12/23
  */
 
 package offer
@@ -17,7 +17,7 @@ func Test_replaceSpace(t *testing.T) {
 		want string
 	}{
 		// TODO: Add test cases.
-		{"test", args{s:"We are happy."}, "We%20are%20happy."},
+		{"Test", args{"We are happy."},"We%20are%20happy."},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

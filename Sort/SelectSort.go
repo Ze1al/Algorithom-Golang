@@ -4,18 +4,18 @@
 
 package Sort
 
-// 选择排序，每次选择出最小的数值，然后放到第一位
+// 选择排序，每次选择出最小的数值，然后放到第一位， 不稳定
 
-func SelectSort(arr []int) []int {
-	nLen := len(arr)
-	for i := 0; i < nLen; i++ {
-		min := i // 记录每次的最小值
-		for j := i + 1; j < nLen; j++ {
-			if arr[j] < arr[min] {
+func SelectSort(nums []int) []int {
+	n := len(nums)
+	for i := 0; i < n; i++ {
+		min := i
+		for j := i+1; j<n;j++{
+			if nums[j] < nums[min] {
 				min = j
 			}
 		}
-		arr[i], arr[min] = arr[min], arr[i]
+		nums[i], nums[min] = nums[min], nums[i]
 	}
-	return arr
+	return nums
 }

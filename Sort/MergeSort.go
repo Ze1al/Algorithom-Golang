@@ -7,14 +7,14 @@ package Sort
 // 归并排序，归并排序的时间复杂度O(nlogn) 空间复杂度是O(n)
 // 稳定
 
-func Merge(arr []int) []int {
-	nLen := len(arr)
-	if nLen < 2 {
-		return arr
+func Merge(nums []int) []int {
+	n := len(nums)
+	if n < 2 {
+		return nums
 	}
-	mid := nLen / 2
-	leftArr := Merge(arr[:mid])
-	rightArr := Merge(arr[mid:])
+	mid := n/2
+	leftArr := Merge(nums[:mid])
+	rightArr := Merge(nums[mid:])
 	res := MergeSort(leftArr, rightArr)
 	return res
 }
@@ -22,16 +22,15 @@ func Merge(arr []int) []int {
 func MergeSort(leftArr []int, rightArr []int) []int {
 	arrNew := []int{}
 	var i, j int
-	for i < len(leftArr) && j < len(rightArr) {
+	for i < len(leftArr) && j<len(rightArr) {
 		if leftArr[i] < rightArr[j] {
 			arrNew = append(arrNew, leftArr[i])
-			i += 1
 		} else {
 			arrNew = append(arrNew, rightArr[j])
-			j += 1
 		}
 	}
 	arrNew = append(arrNew, leftArr[i:]...)
 	arrNew = append(arrNew, rightArr[j:]...)
 	return arrNew
 }
+

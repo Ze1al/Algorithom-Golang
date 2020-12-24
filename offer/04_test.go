@@ -13,11 +13,8 @@ func TestFindNumberIn2DArray(t *testing.T) {
 		target int
 	}
 	matrix := [][]int{
-		{1,4,7,11,15},
-		{2,5,8,12,19},
-		{3,6,9,16,22},
-		{10,13,14,17,24},
-		{18,21,23,26,30},
+		{-1, 3},
+
 	}
 
 	tests := []struct {
@@ -26,7 +23,7 @@ func TestFindNumberIn2DArray(t *testing.T) {
 		want bool
 	}{
 		// TODO: Add test cases.
-		{"test", args{matrix, 5}, true},
+		{"test", args{matrix, -1}, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

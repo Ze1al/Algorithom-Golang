@@ -44,5 +44,29 @@ func getRandNum(num int) int{
 }
 
 
+func quickSort(nums []int) {
+	n := len(nums)
+	if n < 2 {
+		return
+	}
+	head, tail := 0, len(nums)
+	randomNum := getRandNum(n)
+	nums[0], nums[randomNum] = nums[randomNum], nums[0]
+	pviot := nums[0]
+	for i:=1;i<n;i++ {
+		if nums[i] <= pviot {
+			nums[i], nums[head] = nums[head], nums[i]
+			i++
+			head++
+		} else {
+			nums[i], nums[tail] = nums[tail], nums[i]
+			tail--
+		}
+	}
+	quickSort(nums[:head])
+	quickSort(nums[head+1:])
+}
+
+
 
 
