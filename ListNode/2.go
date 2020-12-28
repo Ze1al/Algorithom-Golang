@@ -1,20 +1,12 @@
 /*
-*  @author: didichuxing.com
+*  @author: zengjinlin@didiglobal.com
+*  @Date: 2020/12/24
  */
 
 package ListNode
 
-func kthToLast(head *ListNode, k int) int {
-	fast := head
-	slow := head
-	for fast != nil && k > 0 {
-		fast = fast.Next
-		k -= 1
-	}
-	for fast != nil {
-		slow = slow.Next
-		fast = fast.Next
-	}
-	return slow.Val
 
+func deleteNode(node *ListNode) {
+	node.Val = node.Next.Val
+	node.Next = node.Next.Next
 }

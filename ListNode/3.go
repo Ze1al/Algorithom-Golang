@@ -1,20 +1,50 @@
 /*
-*  @author: didichuxing.com
+*  @author: zengjinlin@didiglobal.com
+*  @Date: 2020/12/24
+	分割链表
+	使用两个链表
+	左边小于x
+	右边大于x
  */
 
 package ListNode
 
-func getKthFromEnd(head *ListNode, k int) *ListNode {
-	slow := head
-	fast := head
+func partition(head *ListNode, x int) *ListNode {
+	cur := head
+	left := &ListNode{
+		Val: 0,
+	}
+	right := &ListNode{
+		Val:0,
+	}
+	leftP := left
+	rightP := right
+	for cur != nil {
+		if cur.Val < x {
+			left.Next = &ListNode{Val:cur.Val}
+			left = left.Next
+		} else {
+			right.Next = &ListNode{Val:cur.Val}
+			right = right.Next
+		}
+		cur = cur.Next
+	}
 
-	for fast != nil && k > 0 {
-		fast = fast.Next
-		k -= 1
+	leftP = leftP.Next
+	rightP = rightP.Next
+
+	if leftP == nil {
+		return rightP
 	}
-	for fast != nil {
-		slow = slow.Next
-		fast = fast.Next
+
+	res := leftP
+	for leftP.Next != nil {
+		leftP = leftP.Next
 	}
-	return slow
+	left.Next = rightP
+
+	return res
 }
+
+
+
