@@ -1,0 +1,23 @@
+/*
+*  @author: zengjinlin@didiglobal.com
+*  @Date: 2021/1/6
+	判断是否合法的二叉搜索树
+ */
+
+package LeetCode
+
+import "math"
+
+func isValidBST(root *TreeNode) bool {
+	return helper(root, math.MinInt64, math.MaxInt64)
+}
+
+func helper(root *TreeNode, lower, upper int) bool {
+	if root == nil {
+		return true
+	}
+	if root.Val <= lower || root.Val >= upper {
+		return false
+	}
+	return helper(root.Left, lower, root.Val) && helper(root.Right, root.Val, upper)
+}

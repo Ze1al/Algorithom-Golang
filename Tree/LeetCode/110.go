@@ -6,7 +6,7 @@
 
 package LeetCode
 
-func isBalanced(root *TreeNode) bool {
+func isBalanced1(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}

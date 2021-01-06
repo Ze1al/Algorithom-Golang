@@ -11,7 +11,24 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+// 树的深度
+
+func maxDepth(root *TreeNode) int{
+	if root == nil {
+		return 0
+	}
+	left := maxDepth(root.Left)
+	right := maxDepth(root.Right)
+	return max(left, right) + 1
+}
 
 
+func max(x, y int) int{
+	if x < y{
+		return y
+	} else {
+		return x
+	}
+}
 
 
