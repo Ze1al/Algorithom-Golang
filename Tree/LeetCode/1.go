@@ -2,6 +2,7 @@
 *  @author: zengjinlin@didiglobal.com
 *  @Date: 2021/1/6
 	判断是否合法的二叉搜索树
+	需要通过 lower 和 upper记录最大和最小值
  */
 
 package LeetCode
