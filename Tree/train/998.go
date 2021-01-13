@@ -1,10 +1,10 @@
 /*
 *  @author: zengjinlin@didiglobal.com
-*  @Date: 2021/1/5
-	最大的二叉树
+*  @Date: 2021/1/12
+	最大二叉树
  */
 
-package LeetCode
+package train
 
 func insertIntoMaxTree(root *TreeNode, val int) *TreeNode {
 	if root == nil {
@@ -18,4 +18,3 @@ func insertIntoMaxTree(root *TreeNode, val int) *TreeNode {
 	root.Right = insertIntoMaxTree(root.Right, val)
 	return root
 }
-

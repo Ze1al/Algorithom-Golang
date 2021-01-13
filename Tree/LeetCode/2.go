@@ -7,14 +7,32 @@
 package LeetCode
 
 
-func pathSum(root *TreeNode, sum int) int {
-
-}
-
-
-func help(root *TreeNode, sum int) bool {
+func pathSum(root *TreeNode, sum int)  int {
+	var res int
 	if root == nil {
-		return false
+		return res
 	}
-	if root.Right == nil && root.
+	res = dfs1(root, sum)
+	if root.Left != nil {
+		res += pathSum(root.Left, sum)
+	}
+	if root.Right != nil {
+		res += pathSum(root.Right, sum)
+	}
+	return res
 }
+
+func dfs1(node *TreeNode, sum int)  int {
+	var res int
+	if sum - node.Val == 0{
+		res ++
+	}
+	if node.Left != nil {
+		res += dfs1(node.Left, sum - node.Val)
+	}
+	if node.Right != nil {
+		res += dfs1(node.Right, sum - node.Val)
+	}
+	return res
+}
+
