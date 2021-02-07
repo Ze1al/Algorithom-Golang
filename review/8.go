@@ -1,25 +1,21 @@
 /*
 *  @author: zengjinlin@didiglobal.com
-*  @Date: 2021/1/15
+*  @Date: 2021/2/4
+	中序 左 中 右
  */
 
-package tencent
-
-func kthSmallest(root *TreeNode, k int) int {
-	res :=  inorderTravel(root)
-	return res[len(res)-k+1]
-}
+package review
 
 
-// 中序遍历 左 中 右
-func inorderTravel(root *TreeNode) []int{
-	res := []int{}
+func inorderTraversal(root *TreeNode) []int {
+
 	if root == nil {
-		return res
+		return []int{}
 	}
-	cur := root
+	res := []int{}
 	stack := []*TreeNode{}
-	for cur !=nil || len(stack) > 0{
+	cur := root
+	for cur != nil || len(stack) > 0{
 		if cur != nil {
 			stack = append(stack, cur)
 			cur = cur.Left

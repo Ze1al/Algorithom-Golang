@@ -1,49 +1,34 @@
 /*
 *  @author: zengjinlin@didiglobal.com
-*  @Date: 2021/1/13
+*  @Date: 2021/2/7
 	两数相加
  */
 
 package tencent
 
-
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	p1 := l1
-	p2 := l2
-	pHead := &ListNode{Val:0}
-	p3 := pHead
-	var c int
-	for p1 != nil && p2 != nil {
-		res := p1.Val + p2.Val
-		cur := (res+c)%10
-		tempNode := &ListNode{Val:cur}
-		p3.Next = tempNode
-		p3 = p3.Next
-		c = (res+c)/10
-		p1 = p1.Next
-		p2 = p2.Next
-	}
-	for p1 != nil {
-		res := p1.Val + c
-		temp := &ListNode{Val:res%10}
-		p3.Next = temp
-		p3 = p3.Next
-		c = res/10
-		p1 = p1.Next
-	}
-	for p2 != nil {
-		res := p2.Val + c
-		temp := &ListNode{Val:res%10}
-		p3.Next = temp
-		p3 = p3.Next
-		c = res/10
-		p2 = p2.Next
+	newHead := &ListNode{Val:0}
+	p:= newHead
+	c := 0
+	for l1 != nil || l2 != nil {
+		num1, num2 := 0, 0
+		if l1 != nil {
+			num1 = l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			num2 = l2.Val
+			l2 = l2.Next
+		}
+
+		sum := num1 + num2 + c
+		temp := sum % 10
+		p.Next = &ListNode{Val: temp}
+		p = p.Next
+		c = sum / 10
 	}
 	if c != 0 {
-		temp := &ListNode{Val:c}
-		p3.Next = temp
-		p3 = p3.Next
+		p.Next = &ListNode{Val: c}
 	}
-	return pHead.Next
+	return newHead.Next
 }
-
